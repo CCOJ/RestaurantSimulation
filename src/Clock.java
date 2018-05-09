@@ -2,19 +2,19 @@ import java.util.Observable;
 
 /**
  * Clock uses a thread to run ticks.
- * Only one Clock object is created at a time for the singleton design.
+ * Only one Clock object is created for the singleton design.
  * This extends Observable to notify any observers.
  */
 
 public class Clock extends Observable implements Runnable {
 
     /**
-     * Supports the singleton design and allows other classes to use this same instance
+     * Supports the singleton design and allows other classes to use this same instance.
      */
     private static Clock instance;
 
     /**
-     * Immediately creates the Thread object and hooks with the Clock object
+     * Immediately creates the Thread object and hooks with the Clock object.
      */
     private Thread thread = new Thread(this);
 
@@ -26,14 +26,16 @@ public class Clock extends Observable implements Runnable {
     }
 
     /**
-     * Private constructor for singleton design
+     * Private constructor for singleton design; Only one Clock can exist.
      */
     private Clock() {
         thread.start();
     }
 
     /**
-     * Creates the only Clock object if not created. Otherwise, it returns the only Clock object
+     * Creates the only Clock object if not created.
+     * Otherwise, it returns the only Clock object.
+     *
      * @return instance; Only Clock object
      */
     public static Clock instance() {
@@ -58,6 +60,4 @@ public class Clock extends Observable implements Runnable {
             ie.printStackTrace();
         }
     }
-
-
 }
